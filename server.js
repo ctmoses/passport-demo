@@ -1,3 +1,5 @@
+'use strict';
+
 // Dependencies+
 var express		= require('express');
 var app			= express();
@@ -9,7 +11,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var sessions 	 = require('express-session');
-var flash 		 = require('connect-flash')
+var flash 		 = require('connect-flash');
 
 //config setup
 // Express configuration
@@ -31,9 +33,9 @@ var configDB	= require('./config/database.js');	//connect to db
 mongoose.connect(configDB.url);
 
 //connect routes
-require('./app/routes')(app, passport) //fire up auth strategy
+require('./app/routes')(app, passport); //fire up auth strategy
 
 
 
 app.listen(port);
-console.log("Listening on port " + port + "...")
+console.log('Listening on port ' + port + '...');

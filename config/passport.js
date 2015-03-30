@@ -64,17 +64,17 @@ module.exports = function(passport){
 		passReqToCallback: true
 	},
 		function(req, username, password, done){
-			User.findOne({"username": username}, function(err, user){
+			User.findOne({'username': username}, function(err, user){
 				if(err)
 					return done(err);
 				
 				// no user found
 				if(!user)
-					return done(null, "Not a valid username");
+					return done(null, 'Not a valid username');
 
 				//user found, but wrong password
 				if(!user.validatePassword(password))
-					return done(null, "Password failure");
+					return done(null, 'Password failure');
 
 				return(done(null, user));
 

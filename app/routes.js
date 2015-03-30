@@ -1,9 +1,10 @@
+'use strict';
 module.exports = function(app, passport){
 	 // =====================================
     // HOME PAGE 
     // =====================================
     app.get('/', function(req, res) {
-        res.render('index.ejs')
+        res.render('index.ejs');
     });
 
     // =====================================

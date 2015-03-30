@@ -1,3 +1,4 @@
+'use strict';
 var mongoose 	= require('mongoose');
 var bcrypt		= require('bcrypt-nodejs');
 
@@ -15,6 +16,6 @@ userSchema.methods.setHash = function(password) {
 //ensure hashed password matches saved hash
 userSchema.methods.validatePassword = function(password) {
 	return bcrypt.compareSync(password, this.password);
-}
+};
 
 module.exports = mongoose.model('User', userSchema);
