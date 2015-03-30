@@ -1,0 +1,5 @@
+#ignore db config
+/config/database.js
+
+#ignore node module files
+/node_modules
