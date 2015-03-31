@@ -12,6 +12,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var sessions 	 = require('express-session');
 var flash 		 = require('connect-flash');
+<<<<<<< HEAD
+=======
+var cors       	 = require("cors");
+var path         = require('path');
+>>>>>>> angular
 
 //config setup
 // Express configuration
@@ -27,6 +32,9 @@ var flash 		 = require('connect-flash');
 	app.use(passport.initialize());
 	app.use(passport.session()); // persistent login sessions
 	app.use(flash()); // use connect-flash for flash messages stored in session
+
+	//get files for angular
+  	app.use("/angular", express.static(__dirname + '/angular'));
 
 //DB connect
 var configDB	= require('./config/database.js');	//connect to db

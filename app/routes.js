@@ -1,11 +1,7 @@
+
 'use strict';
+var path         = require('path');
 module.exports = function(app, passport){
-	 // =====================================
-    // HOME PAGE 
-    // =====================================
-    app.get('/', function(req, res) {
-        res.render('index.ejs');
-    });
 
     // =====================================
     // LOGIN 
@@ -16,7 +12,7 @@ module.exports = function(app, passport){
     });
 
     app.post('/login', passport.authenticate( 'local-login', {
-    	successRedirect: '/test',
+    	successRedirect: '/home',
     	failureRedirect: '/login',
     	flashFailure: true
     }));
@@ -34,7 +30,7 @@ module.exports = function(app, passport){
 
     //handle new user signup
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect : '/test', // redirect to the secure profile section
+        successRedirect : '/home', // redirect to the secure profile section
         failureRedirect : '/signup', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
@@ -52,10 +48,8 @@ module.exports = function(app, passport){
     // =====================================
     // check auth before passing to other pages
     app.get('/*', checkAuth, function(req, res) {
-        res.send('other pages...');
-    });
-
-    
+         res.sendFile(path.join(__dirname, '../angular', 'index.html'));
+    });    
 };
 
 // route middleware to make sure a user is logged in
@@ -66,6 +60,6 @@ function checkAuth(req, res, next) {
         return next();
 
     // if they aren't redirect them to the home page
-    res.redirect('/');
+    res.redirect('/login');
 }
 
