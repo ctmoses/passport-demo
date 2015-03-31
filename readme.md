@@ -13,3 +13,4 @@ Basic local-login and local-signup strategies
 
 ##Testing
 - Tests use superagent to check route changes on sign-up/login/logout
+- Run tests using ```npm test``` from the command line
