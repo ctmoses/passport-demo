@@ -11,8 +11,21 @@ describe('Passport', function() {
 	//======================================================================================
 	describe('#Signup', function () {
 		//delete the test user after signup tests are complete
-		after(function() {
+		afterEach(function() {
 			User.find({username: 'test'}).remove().exec();
+		});
+
+		//create a new user==================================
+		it('#Should route to /login after a new user is created', function(done) {
+			request(app)
+				.post('/signup')
+				.send({'username': 'test', "password": "test"})
+				.expect(302) //login redirects via temp route
+				.end(function(err, res) {
+					should.not.exist(err); //don't expect any errors
+					res.header.location.should.equal('/home'); //check for redirect route
+					done(); //return from callback
+				});
 		});
 
 		//create a new user==================================
@@ -23,7 +36,11 @@ describe('Passport', function() {
 				.expect(302) //login redirects via temp route
 				.end(function(err, res) {
 					should.not.exist(err); //don't expect any errors
-					res.header.location.should.equal('/home'); //check for redirect route
+
+					User.findOne({username: 'test'}).exec( function(err, user){
+						user.username.should.equal('test'); //check for redirect route
+					});
+					
 					done(); //return from callback
 				});
 		});

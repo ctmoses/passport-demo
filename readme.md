@@ -10,3 +10,6 @@ Basic local-login and local-signup strategies
 ##Angular Routing
 - Uses the ```/*``` express route.
 - Try it out using ```/home``` or ```/next```
+
+##Testing
+- Tests use superagent to check route changes on sign-up/login/logout
