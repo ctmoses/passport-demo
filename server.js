@@ -12,11 +12,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var sessions 	 = require('express-session');
 var flash 		 = require('connect-flash');
-<<<<<<< HEAD
-=======
 var cors       	 = require("cors");
 var path         = require('path');
->>>>>>> angular
+
 
 //config setup
 // Express configuration
