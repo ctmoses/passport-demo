@@ -5,6 +5,7 @@ var express		= require('express');
 var app			= express();
 var port     	= process.env.PORT || 8080;
 var mongoose 	= require('mongoose');
+var User		= require('./app/models/User');
 var passport 	= require('passport');
 var flash    	= require('connect-flash');
 var morgan       = require('morgan');
@@ -44,4 +45,4 @@ require('./app/routes')(app, passport); //fire up auth strategy
 
 
 app.listen(port);
-console.log('Listening on port ' + port + '...');
+module.exports = app;
