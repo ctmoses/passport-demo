@@ -11,14 +11,13 @@ module.exports = function(app, passport){
         res.render('login.ejs', { message: req.flash('loginMessage') });
     });
 
+    //post login form for validation
     app.post('/login', passport.authenticate( 'local-login', {
-    	successRedirect: '/home',
-    	failureRedirect: '/login',
+    	successRedirect: '/home', //head to main page with good auth
+    	failureRedirect: '/login',//return to /login again with failed auth
     	flashFailure: true
     }));
 
-    // process the login form
-    // app.post('/login', do all our passport stuff here);
 
     // =====================================
     // SIGNUP 
@@ -40,11 +39,11 @@ module.exports = function(app, passport){
     // =====================================
     app.get('/logout', function(req, res) {
         req.logout();
-        res.redirect('/login');
+        res.redirect('/login'); //send back to login page after logout complete
     });
  
     // =====================================
-    // OTHER STUFF
+    // OTHER STUFF - pass to angular router if auth is good
     // =====================================
     // check auth before passing to other pages
     app.get('/*', checkAuth, function(req, res) {

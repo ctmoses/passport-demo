@@ -57,7 +57,7 @@ module.exports = function(passport){
 
     }));
 
-	//local login
+	//login strategy
 	passport.use('local-login', new LocalStrategy({
 		usernameField: 'username',
 		passwordField: 'password',
@@ -72,9 +72,11 @@ module.exports = function(passport){
 				if(!user)
 					return done(null, false, req.flash('loginMessage', 'No user found.'));
 
+
 				//user found, but wrong password
 				if(!user.validatePassword(password))
 					return done(null, false, req.flash('loginMessage', 'Wrong password.'));
+
 
 				return(done(null, user));
 
