@@ -2,7 +2,8 @@ angular.module('passport-demo', ['ngRoute'])
 	.config(function($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/home', {
-				templateUrl: 'angular/templates/home.html'
+				templateUrl: 'angular/templates/home.html',
+				controller: 'HomeCtrl'
 			})
 			.when('/next', {
 				templateUrl: 'angular/templates/next.html'

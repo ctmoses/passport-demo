@@ -43,12 +43,19 @@ module.exports = function(app, passport){
     });
  
     // =====================================
+    // USER
+    // =====================================
+    app.get('/user', function(req, res) {
+        res.send(req.user);
+    });
+
+    // =====================================
     // OTHER STUFF - pass to angular router if auth is good
     // =====================================
     // check auth before passing to other pages
     app.get('/*', checkAuth, function(req, res) {
          res.sendFile(path.join(__dirname, '../angular', 'index.html'));
-    });    
+    });        
 };
 
 // route middleware to make sure a user is logged in
